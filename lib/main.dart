@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:weatherr/core/service_locator.dart';
 import 'package:weatherr/presentation/screens/mainPage/main_page.dart';
 
 void main() {
+  setupLocator();
   runApp(const MyApp());
 }
 

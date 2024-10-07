@@ -7,6 +7,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:weatherr/constants/color.dart';
+import 'package:weatherr/core/service_locator.dart';
 import 'package:weatherr/data/repositories/weather_repository.dart';
 import 'package:weatherr/domain/usecases/fetch_weather_use_case.dart';
 import 'package:weatherr/presentation/bloc/weather/weather_bloc.dart';
@@ -29,11 +30,7 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     super.initState();
-
-    final WeatherRepository weatherRepository = WeatherRepository();
-    final FetchWeatherUseCase fetchWeatherUseCase =
-        FetchWeatherUseCase(weatherRepository);
-    mianPageBloc = MianPageBloc(fetchWeatherUseCase);
+    mianPageBloc = getIt<MianPageBloc>();
     mianPageBloc.add(MainPageInitialFetchEvent());
   }
 
